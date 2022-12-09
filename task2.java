@@ -8,7 +8,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String date = scanner.next();
         Matcher m = Pattern.compile("(?=\\S*[0-9])(?=\\S*[a-z])(?=\\S*[A-Z])\\S{8,}").matcher(date);
-        if(m.matches())
+        Matcher tester = Pattern.compile("(?=\\S*[@!#$%^&*()+=;:{},.?/-])\\S{1,}").matcher(date);
+        if(m.matches() && !tester.matches())
             System.out.println("Пароль надежен");
         else
             System.out.println("Пароль ненадежен: попробуйте снова");
